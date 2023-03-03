@@ -13,7 +13,16 @@ const io = new Server(server, {
     methods: ["GET", "POST"]
   }
 })
-// adfasdf
+
+io.on("connection", (socket) => {
+  console.log(socket.id);
+
+
+  socket.on("disconnect", ()=>{
+    console.log("User Disconnected", socket.id);
+  })
+})
+
 server.listen(4000, ()=>{
   console.log("SERVER RUNNING");
 })
